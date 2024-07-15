@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню врача</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .menu-item {
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            padding: 15px 30px;
+            margin: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+        .menu-item:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>Меню врача</h1>
+</div>
+<div class="container">
+    <div class="menu">
+        <a href="/doctor-menu/schedule" class="menu-item">Просмотр расписания на день</a>
+        <a href="/doctor/appointments" class="menu-item">Просмотр всех приёмов</a>
+        <a href="/doctor/add-appointment" class="menu-item">Добавить новый приём</a>
+        <a href="/doctor/manage-patients" class="menu-item">Управление пациентами</a>
+        <a href="/doctor/update-info" class="menu-item">Обновление личной информации</a>
+        <a href="/logout" class="menu-item">Выход</a>
+    </div>
+</div>
+</body>
+</html>

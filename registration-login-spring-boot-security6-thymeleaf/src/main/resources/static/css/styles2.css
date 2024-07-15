@@ -1,0 +1,130 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.select-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.select-container1 {
+    text-align: center;
+    margin-bottom: 90px;
+}
+.calendar {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.day-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.day-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.calendar td {
+    padding: 0;
+}
+
+.day-btn span {
+    display: block;
+}
+
+.day-btn span:first-child {
+    font-weight: bold;
+}
+
+.day-btn span:last-child {
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* Стили для таблицы времени */
+.time-slots {
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.time-slots table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+
+
+    /* Стили для выпадающего блока */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Стили для кнопки выпадающего блока */
+.dropdown button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Стили для контента выпадающего блока */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Стили для таблицы в контенте выпадающего блока */
+.dropdown-content table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Стили для ячеек таблицы в контенте выпадающего блока */
+.dropdown-content table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+/* Показать контент выпадающего блока при наведении на кнопку */
+.dropdown:hover .dropdown-content {
+    display: block;
+}

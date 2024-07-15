@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/css/appoi.css" rel="stylesheet">
+    <title>Appointment Calendar</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        .available {
+            background-color: #ffcc00;
+            cursor: pointer;
+        }
+        .unavailable {
+            background-color: #f2f2f2;
+        }
+        .highlight {
+            background-color: #ff9900;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<h1>Выберите дату для записи</h1>
+<div id="calendar"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        const calendar = $('#calendar');
+        const startDate = '2024-05-01';
+        const endDate = '2024-05-31';
+
+        $.ajax({
+            url: '/appointments/available-slots',
+            data: { startDate: startDate, endDate: endDate },
+            success: function(slots) {
+                let currentDate = new Date(startDate);
+                const end = new Date(endDate);
+                let html = '<table><tr>';
+                const daysOfWeek = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'];
+
+                for (let day of daysOfWeek) {
+                    html += `<th>${day}</th>`;
+                }
+
+                html += '</tr><tr>';
+
+                while (currentDate <= end) {
+                    if (currentDate.getDay() === 1) { // Если понедельник, начинаем новый ряд
+                        html += '</tr><tr>';
+                    }
+
+                    const formattedDate = currentDate.toISOString().split('T')[0];
+                    const slot = slots.find(s => s.date === formattedDate);
+
+                    if (slot) {
+                        html += `<td class="available" data-date="${formattedDate}">${currentDate.getDate()}<br>${slot.availableSlots} талонов</td>`;
+                    } else {
+                        html += `<td class="unavailable">${currentDate.getDate()}</td>`;
+                    }
+
+                    currentDate.setDate(currentDate.getDate() + 1);
+                }
+
+                html += '</tr></table>';
+                calendar.html(html);
+
+                $('.available').on('click', function() {
+                    $('.highlight').removeClass('highlight');
+                    $(this).addClass('highlight');
+                    const selectedDate = $(this).data('date');
+                    alert('Вы выбрали дату: ' + selectedDate);
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>

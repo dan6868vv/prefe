@@ -1,0 +1,175 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Spring Security 6 + Thymeleaf Demo</title>-->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+<!--</head>-->
+
+
+<!--<body>-->
+
+
+<!--<br><br><br><br><br><br><br>-->
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <div class="col-md-6 col-md-offset-3">-->
+
+<!--            &lt;!&ndash; success message &ndash;&gt;-->
+<!--            <div th:if="${param.success}">-->
+<!--                <div class="alert alert-info">You've successfully registered-->
+<!--                    to our awesome app!</div>-->
+<!--            </div>-->
+
+<!--            <div th:if="${param.email_invalid}">-->
+<!--                <div class="alert alert-danger">-->
+<!--                    Этот email уже используется</div>-->
+<!--            </div>-->
+
+<!--            <h1>Регистрация</h1>-->
+
+<!--            <form th:action="@{/registration}" method="post"-->
+<!--                  th:object="${user}">-->
+<!--                <div class="form-group">-->
+<!--                    <label class="control-label" for="firstName">-->
+<!--                        Имя </label>-->
+<!--                    <input id="firstName" class="form-control"-->
+<!--                           th:field="*{firstName}" required-->
+<!--                           autofocus="autofocus" />-->
+<!--                </div>-->
+
+<!--                <div class="form-group">-->
+<!--                    <label class="control-label" for="lastName">-->
+<!--                        Фамилия </label> <input id="lastName"-->
+<!--                                                  class="form-control" th:field="*{lastName}"-->
+<!--                                                  required autofocus="autofocus" />-->
+<!--                </div>-->
+
+<!--                <div class="form-group">-->
+<!--                    <label class="control-label" for="email"> Email-->
+<!--                    </label> <input id="email" class="form-control"-->
+<!--                                    th:field="*{email}" required autofocus="autofocus"-->
+<!--                />-->
+<!--                </div>-->
+
+<!--                <div class="form-group">-->
+<!--                    <label class="control-label" for="password">-->
+<!--                        Пароль </label> <input id="password"-->
+<!--                                                 class="form-control" type="password"-->
+<!--                                                 th:field="*{password}" required-->
+<!--                                                 autofocus="autofocus" />-->
+<!--                </div>-->
+
+<!--                <div class="form-group">-->
+<!--                    <button type="submit" class="btn btn-primary">-->
+<!--                        Зарегистрироваться </button>-->
+<!--                    <span>Уже зарегистрированы? <a href="/"-->
+<!--                                                 th:href="@{/login}">Войти в аккаунт-->
+<!--                                </a></span>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            margin-top: 100px;
+        }
+
+        .card {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .alert {
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .btn-primary {
+            width: 100%;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .link-secondary {
+            color: #6c757d;
+        }
+
+        .link-secondary:hover {
+            color: #495057;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <!-- success message -->
+                <div th:if="${param.success}" class="alert alert-info">
+                    You've successfully registered to our awesome app!
+                </div>
+
+                <div th:if="${param.email_invalid}" class="alert alert-danger">
+                    Этот email уже используется
+                </div>
+
+                <h1 class="text-center">Регистрация</h1>
+
+                <form th:action="@{/registration}" method="post" th:object="${user}">
+                    <div class="form-group">
+                        <label for="nickName">NickName</label>
+                        <input id="nickName" class="form-control" th:field="*{nickName}" required autofocus />
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input id="email" class="form-control" th:field="*{email}" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Пароль</label>
+                        <input id="password" class="form-control" type="password" th:field="*{password}" required />
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+                    </div>
+                    <div class="text-center">
+                        <span>Уже зарегистрированы? <a href="/" th:href="@{/login}" class="link-secondary">Войти в аккаунт</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

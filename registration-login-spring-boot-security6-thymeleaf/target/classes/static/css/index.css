@@ -1,0 +1,81 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h1 {
+    color: #2c3e50;
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    cursor: pointer;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 18px;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+    background-color: #2980b9;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.reserve-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.reserve-buttons .button {
+    background-color: #7f8c8d;
+}
+
+.reserve-buttons .button:hover {
+    background-color: #34495e;
+}
+
+.logo {
+    margin-bottom: 50px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 20px;
+    text-align: center;
+    width: 100%;
+    color: #999;
+}
+
+.footer a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}

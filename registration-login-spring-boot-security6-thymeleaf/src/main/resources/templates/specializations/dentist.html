@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Стоматологи<br/><br/>
+Врачи, ведущие прием:
+<div th:each="doctor : ${doctors}">
+    <a th:href="@{/doctor/{id}(id=${doctor.getId()})}" th:text="${doctor.getFirstName()}">doctor</a>
+</div>
+</body>
+</html>

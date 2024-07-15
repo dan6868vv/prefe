@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/gptBeauth.js" rel="stylesheet">
+    <link href="/css/gptBeauth.css" rel="stylesheet">
+    <script th:src="@{/gptBeauth.js}"></script>
+
+</head>
+<body>
+<!--doctor docSchedule-->
+<div>
+    <a th:text="${doctor.getEmail()}">email Doctor</a><br/>
+    <a th:text="${doctor.getFirstName()}">email Doctor</a><br/>
+<!--    <a th:text="doctor.getmail()">email Doctor</a>-->
+    <div th:each="doc : ${docSchedule}">
+        <a th:text="${doc}">user</a>
+    </div>
+    <div class="container">
+        <h1>Расписание приема к врачу</h1>
+        <div class="select-container">
+            <label for="month">Выберите месяц:</label>
+            <select id="month">
+                <option value="1">Январь</option>
+                <option value="2">Февраль</option>
+                <option value="3">Март</option>
+                <option value="4">Апрель</option>
+                <option value="5">Май</option>
+                <!-- Добавьте остальные месяцы по аналогии -->
+            </select>
+        </div>
+        <table>
+            <thead>
+            <tr>
+                <th>День</th>
+                <th>Время</th>
+                <th>Запись</th>
+            </tr>
+            </thead>
+            <tbody id="calendar-body">
+            <!-- JavaScript будет добавлять строки для каждого дня месяца -->
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

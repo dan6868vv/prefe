@@ -1,0 +1,228 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org" lang="ru">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--    <link href="/css/main.css" rel="stylesheet">-->
+<!--    <link href="/css/spizdeno.css" rel="stylesheet">-->
+<!--</head>-->
+<!--<body>-->
+<!--<a href="/" class="home-button">На главную</a>-->
+
+
+<!--<br/>-->
+<!--<br/>-->
+<!--<div>-->
+<!--    <div class="content">-->
+<!--        <div class="row">-->
+<!--            <div class="cell three">-->
+<!--                <a href="/specializations/ophthalmologist" class="in_active"></a>-->
+<!--                <h5>Офтальмолог</h5>-->
+<!--            </div>-->
+<!--            <div class="cell three">-->
+<!--                <a href="/specializations/neurologist" class="in_active"></a>-->
+<!--                <h5>Невролог</h5>-->
+<!--            </div>-->
+<!--            <div class="cell three">-->
+<!--                <a href="/specializations/dentist" class="in_active"></a>-->
+<!--                <h5>Стоматолог</h5>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="row">-->
+<!--            <div class="cell three">-->
+<!--                <a href="/specializations/traumatologist" class="in_active"></a>-->
+<!--                <h5>Травмотолог</h5>-->
+<!--            </div>-->
+<!--            <div class="cell three">-->
+<!--                <a href="/specializations/urologist" class="in_active"></a>-->
+<!--                <h5>Уролог</h5>-->
+<!--            </div>-->
+<!--            <div class="cell three">-->
+<!--                <a href="/specializations/lor" class="in_active"></a>-->
+<!--                <h5>Оториноларинголог</h5>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--&lt;!&ndash;        <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="cell three">&ndash;&gt;-->
+<!--&lt;!&ndash;                <a href="/policlinic/minsk-33gp/order/5168" class="in_active"></a>&ndash;&gt;-->
+<!--&lt;!&ndash;                <h5>Врач-офтальмолог</h5>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="cell three">&ndash;&gt;-->
+<!--&lt;!&ndash;                <a href="/policlinic/minsk-33gp/order/18714" class="in_active"></a>&ndash;&gt;-->
+<!--&lt;!&ndash;                <h5>Врач-офтальмолог («Студенческая деревня»,  ул. Чюрлениса, 1)</h5>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="cell three">&ndash;&gt;-->
+<!--&lt;!&ndash;                <a href="/policlinic/minsk-33gp/order/5184" class="in_active"></a>&ndash;&gt;-->
+<!--&lt;!&ndash;                <h5>Врач-стоматолог-терапевт</h5>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="cell three">&ndash;&gt;-->
+<!--&lt;!&ndash;                <a href="/policlinic/minsk-33gp/order/31691" class="in_active"></a>&ndash;&gt;-->
+<!--&lt;!&ndash;                <h5>Врач-стоматолог-терапевт («Студенческая деревня»,  ул. Чюрлениса, 1)</h5>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="cell three">&ndash;&gt;-->
+<!--&lt;!&ndash;                <a href="/policlinic/minsk-33gp/order/5177" class="in_active"></a>&ndash;&gt;-->
+<!--&lt;!&ndash;                <h5>Врач-стоматолог-хирург</h5>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="cell three">&ndash;&gt;-->
+<!--&lt;!&ndash;                <a href="/policlinic/minsk-33gp/order/5165" class="in_active"></a>&ndash;&gt;-->
+<!--&lt;!&ndash;                <h5>Врач-травматолог-ортопед</h5>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="cell three">&ndash;&gt;-->
+<!--&lt;!&ndash;                <a href="/policlinic/minsk-33gp/order/5164" class="in_active"></a>&ndash;&gt;-->
+<!--&lt;!&ndash;                <h5>Врач-уролог</h5>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="cell three">&ndash;&gt;-->
+<!--&lt;!&ndash;                <a href="/policlinic/minsk-33gp/order/5163" class="in_active"></a>&ndash;&gt;-->
+<!--&lt;!&ndash;                <h5>Врач-хирург</h5>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="cell three">&ndash;&gt;-->
+<!--&lt;!&ndash;                <a href="/policlinic/minsk-33gp/order/18683" class="in_active"></a>&ndash;&gt;-->
+<!--&lt;!&ndash;                <h5>Врач-хирург («Студенческая деревня»,  ул. Чюрлениса, 1)</h5>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        &ndash;&gt;-->
+<!--        <script>-->
+<!--            jQuery(document).ready(function ($) {-->
+<!--                $('.notActual').tipso({offsetY: 20, position: 'top', width: 275, class: 'professionTipso'});-->
+<!--            });-->
+<!--        </script>            </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Специализации</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .home-button {
+            background-color: #95a5a6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .home-button:hover {
+            background-color: #7f8c8d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .content {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .cell {
+            flex: 1;
+            margin: 0 10px;
+            text-align: center;
+        }
+
+        .cell a {
+            display: block;
+            padding: 20px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cell a:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .cell h5 {
+            margin: 10px 0 0;
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <a href="/" class="home-button">На главную</a>
+    <h1>Выберите специальность врача</h1>
+</div>
+
+<div class="content">
+    <div class="row">
+        <div class="cell">
+            <a href="/specializations/ophthalmologist">Офтальмолог</a>
+<!--            <h5>Офтальмолог</h5>-->
+        </div>
+        <div class="cell">
+            <a href="/specializations/neurologist">Невролог</a>
+<!--            <h5>Невролог</h5>-->
+        </div>
+        <div class="cell">
+            <a href="/specializations/dentist">Стоматолог</a>
+<!--            <h5>Стоматолог</h5>-->
+        </div>
+    </div>
+    <div class="row">
+        <div class="cell">
+            <a href="/specializations/traumatologist">Травмотолог</a>
+<!--            <h5>Травмотолог</h5>-->
+        </div>
+        <div class="cell">
+            <a href="/specializations/urologist">Уролог</a>
+<!--            <h5>Уролог</h5>-->
+        </div>
+        <div class="cell">
+            <a href="/specializations/lor">Оториноларинголог</a>
+<!--            <h5>Оториноларинголог</h5>-->
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

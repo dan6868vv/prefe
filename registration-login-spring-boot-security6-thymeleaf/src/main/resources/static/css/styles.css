@@ -1,0 +1,110 @@
+
+/*body {*/
+/*    font-family: Arial, sans-serif;*/
+/*    background-color: #f9f9f9;*/
+/*}*/
+.header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.back-button, .home-button {
+    background-color: #95a5a6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+}
+.back-button {
+    left: 20px;
+}
+
+.home-button {
+    right: 20px;
+}
+
+.back-button:hover, .home-button:hover {
+    background-color: #7f8c8d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px;
+}
+
+.select-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.calendar {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td,h1 {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.day-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.day-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.calendar td {
+    padding: 0;
+}
+
+.day-btn span {
+    display: block;
+}
+
+.day-btn span:first-child {
+    font-weight: bold;
+}
+
+.day-btn span:last-child {
+    font-size: 0.9em;
+    color: #555;
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Календарь приема в поликлинике</title>
+    <link rel="stylesheet" href="/css/styles2.css">
+<!--    <link rel="stylesheet" href="@{gpt.css}">-->
+    <link th:href="@{/styles/gpt.css}" rel="stylesheet" />
+
+</head>
+<body>
+<div class="container">
+
+    <h1>Расписание приема в поликлинике</h1>
+    <div class="select-container1">
+        <label for="month">Выберите месяц:</label>
+        <select id="month" name="month" onchange="location.href='/calendar?month=' + this.value">
+            <option th:each="month, iterStat : ${months}" th:value="${iterStat.index + 1}" th:text="${month}" th:selected="${iterStat.index + 1} == ${currentMonth}"></option>
+        </select>
+    </div>
+    <table class="calendar">
+        <thead>
+        <tr>
+            <th>Пн</th>
+            <th>Вт</th>
+            <th>Ср</th>
+            <th>Чт</th>
+            <th>Пт</th>
+            <th>Сб</th>
+            <th>Вс</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="week : ${weeks}">
+            <td th:each="dayData : ${week}">
+                <button type="button" class="day-btn" th:if="${dayData != null}" th:data-day="${dayData.date.dayOfMonth}" onclick="showTimeSlots(this)">
+                    <span th:text="${dayData.date.dayOfMonth}"></span>
+                    <span th:text="'Свободно: ' + ${dayData.freeSlots}"></span>
+                    <div class="dropdown">
+                    <button onclick="toggleDropdown()" class="dropbtn">Выбрать день</button>
+                    <div id="dropdown-content" class="dropdown-content">
+                        <tr th:each="doc : ${}"
+                        <table id="appointmentsTable">
+                            <!-- Сюда будет добавлено время талонов после выбора дня -->
+                        </table>
+                    </div>
+                </div>
+                </button>
+
+
+
+                <span th:if="${dayData == null}">&nbsp;</span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div id="time-slots" class="time-slots" style="display: none;">
+        <h2 id="selected-date"></h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Время</th>
+                <th>Интервал</th>
+            </tr>
+            </thead>
+            <tbody id="time-slot-rows">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function showTimeSlots(button) {
+        const day = button.getAttribute('data-day');
+        const month = document.getElementById('month').value;
+        const year = new Date().getFullYear();
+
+        fetch(`/calendar?month=${month}&day=${day}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('selected-date').innerText = `${day} ${data.monthName} ${year}`;
+                const timeSlotRows = document.getElementById('time-slot-rows');
+                timeSlotRows.innerHTML = '';
+
+                data.timeSlots.forEach(timeSlot => {
+                    const row = document.createElement('tr');
+                    const timeCell = document.createElement('td');
+                    const intervalCell = document.createElement('td');
+
+                    timeCell.innerText = timeSlot;
+                    intervalCell.innerText = '20 минут';
+
+                    row.appendChild(timeCell);
+                    row.appendChild(intervalCell);
+                    timeSlotRows.appendChild(row);
+                });
+
+                document.getElementById('time-slots').style.display = 'block';
+            });
+    }
+</script>
+</body>
+</html>

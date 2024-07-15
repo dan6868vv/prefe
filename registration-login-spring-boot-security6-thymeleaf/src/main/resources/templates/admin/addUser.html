@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Создать пользователя</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="/css/addUser.css" rel="stylesheet">
+</head>
+<body>
+<div class="header">
+    <a href="/admin/menu" class="back-button">Назад</a>
+    <h1>Создать пользователя</h1>
+</div>
+<div class="form-container">
+    <h2>Новый пользователь</h2>
+    <form th:action="@{/admin/users/addUser}" method="post" th:object="${user}">
+        <div class="form-group">
+            <label class="control-label" for="firstName">
+                Имя </label>
+            <input id="firstName" class="form-control"
+                   th:field="*{firstName}" required
+                   autofocus="autofocus" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="lastName">
+                Фамилия </label>
+            <input id="lastName" class="form-control"
+                   th:field="*{lastName}" required
+                   autofocus="autofocus" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="email"> Email
+            </label> <input id="email" class="form-control"
+                            th:field="*{email}" required autofocus="autofocus"
+        />
+
+        </div>
+<!--        <div class="form-group">-->
+<!--            <label class="control-label" for="role"> Role-->
+<!--            </label> <br/>ROLE_USER <br/> ROLE_ADMIN <br/>ROLE_DOCTOR<input id="role" class="form-control" -->
+<!--                                                                            th:field="*{role}" required autofocus="autofocus"-->
+<!--        />-->
+<!--        </div>-->
+        <div class="form-group">
+            <label for="role">Роль</label>
+            <select id="role" name="role" th:field="*{role}" >
+                <option value="ROLE_USER">Пользователь</option>
+                <option value="ROLE_DOCTOR">Врач</option>
+                <option value="ROLE_ADMIN">Администратор</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="password">
+                Password </label> <input id="password"
+                                         class="form-control" type="password"
+                                         th:field="*{password}" required
+                                         autofocus="autofocus" />
+        </div>
+        <div class="form-group">
+            <button type="submit">Создать</button>
+        </div>
+    </form>
+</div>
+<div class="footer">
+    © 2024 Ваша Медицинская Компания. Все права защищены. <br>
+    <a href="/privacy-policy">Политика конфиденциальности</a> | <a href="/terms-of-service">Условия использования</a>
+</div>
+</body>
+</html>

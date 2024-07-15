@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Appointment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.css">
+</head>
+<body>
+<h1>Book an Appointment</h1>
+<input type="text" id="datepicker" placeholder="Select date">
+<select id="timepicker">
+    <option value="" disabled selected>Select time</option>
+</select>
+<button id="bookButton">Book Appointment</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#datepicker').flatpickr({
+            onChange: function(selectedDates, dateStr, instance) {
+                $.ajax({
+                    url: '/appointments/available-slots',
+                    data: { date: dateStr },
+                    success: function(slots) {
+                        $('#timepicker').empty().append('<option value="" disabled selected>Select time</option>');
+                        slots.forEach(function(slot) {
+                            $('#timepicker').append('<option value="' + slot.id + '">' + slot.time + '</option>');
+                        });
+                    }
+                });
+            }
+        });
+
+        $('#bookButton').on('click', function() {
+            var slotId = $('#timepicker').val();
+            if (slotId) {
+                $.post('/appointments/book', { slotId: slotId }, function(response) {
+                    alert(response);
+                }).fail(function(response) {
+                    alert(response.responseText);
+                });
+            } else {
+                alert("Please select a date and time.");
+            }
+        });
+    });
+</script>
+</body>
+</html>

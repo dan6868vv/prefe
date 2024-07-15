@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать пользователя</title>
+    <link rel="stylesheet" href="/css/editUser.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="header">
+    <a href="/admin/users" class="back-button">Назад</a>
+    <h1>Редактировать пользователя</h1>
+</div>
+<div class="form-container">
+    <h2>Редактировать пользователя</h2>
+    <form action="#" th:action="@{/admin/users/edit/{id}(id=${user.id})}" th:object="${user}" method="post">
+        <div class="form-group">
+            <label for="name">Имя</label>
+            <input type="text" id="name" th:field="*{firstName}" required>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="lastName">
+                Фамилия </label>
+            <input id="lastName" class="form-control"
+                   th:field="*{lastName}" required
+                   autofocus="autofocus" />
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" th:field="*{email}" required>
+        </div>
+        <div class="form-group">
+            <label for="role">Роль</label>
+            <select id="role" name="role" th:field="*{roles}" >
+                <option value="ROLE_USER">Пользователь</option>
+                <option value="ROLE_DOCTOR">Врач</option>
+                <option value="ROLE_ADMIN">Администратор</option>
+            </select>
+        </div>
+<!--        <div class="form-group">-->
+<!--            <label for="password">Пароль</label>-->
+<!--            <input type="password" id="password" th:field="*{password}" required>-->
+<!--        </div>-->
+        <div class="form-group">
+            <button type="submit">Сохранить</button>
+        </div>
+    </form>
+</div>
+<div class="footer">
+    © 2024 Ваша Медицинская Компания. Все права защищены. <br>
+    <a href="/privacy-policy">Политика конфиденциальности</a> | <a href="/terms-of-service">Условия использования</a>
+</div>
+</body>
+</html>
