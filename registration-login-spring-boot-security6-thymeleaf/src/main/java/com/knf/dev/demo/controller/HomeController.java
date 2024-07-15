@@ -26,6 +26,7 @@ public class HomeController {
    @GetMapping("/")
    public String home(Model model) {
       Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+      System.out.println("Authentication: " + auth.toString());
       model.addAttribute("authen", auth);
       model.addAttribute("nameUser", userServiceImpl.getNameByEmail(auth.getName()));
       System.out.println("Name: " + userServiceImpl.getNameByEmail(auth.getName()));

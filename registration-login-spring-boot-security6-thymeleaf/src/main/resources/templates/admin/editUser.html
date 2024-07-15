@@ -13,21 +13,18 @@
 </div>
 <div class="form-container">
     <h2>Редактировать пользователя</h2>
-    <form action="#" th:action="@{/admin/users/edit/{id}(id=${user.id})}" th:object="${user}" method="post">
+    <form action="#" th:action="@{/admin/users/edit/{id}(id=${userId})}" th:object="${user}" method="post">
         <div class="form-group">
-            <label for="name">Имя</label>
-            <input type="text" id="name" th:field="*{firstName}" required>
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="lastName">
-                Фамилия </label>
-            <input id="lastName" class="form-control"
-                   th:field="*{lastName}" required
-                   autofocus="autofocus" />
+            <label for="nickName">Имя</label>
+            <input type="text" id="nickName" th:field="*{nickName}" required>
         </div>
         <div class="form-group">
             <label for="email">Email</label>
             <input type="email" id="email" th:field="*{email}" required>
+        </div>
+        <div class="form-group">
+            <label for="balance">Баланс</label>
+            <input type="number" id="balance" th:field="*{balance}" required>
         </div>
         <div class="form-group">
             <label for="role">Роль</label>

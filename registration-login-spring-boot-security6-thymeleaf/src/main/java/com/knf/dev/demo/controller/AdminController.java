@@ -52,14 +52,9 @@ public class AdminController {
         return "admin/addUser";
     }
 
-
     @GetMapping("/users")
-    public String searchUsers(@RequestParam("keyword") String keyword, Model model) {
-        if (keyword != null && !keyword.isEmpty()) {
-
-        } else {
-            model.addAttribute("users", userService.getAll());
-        }
+    public String users(Model model){
+        model.addAttribute("users", userRepository.findAll());
         return "admin/users";
     }
 
@@ -82,5 +77,18 @@ public class AdminController {
         return "redirect:/admin/users?keyword=";
     }
 
+    @GetMapping("/users/edit/{id}")
+    public String editUser(@PathVariable("id") long id, Model model) {
+        model.addAttribute("userId",id);
+//        model.addAttribute("user", userRepository.findById(id));
+        User user = userService.findUserById(id);
+        model.addAttribute("user", user);
+        return "admin/editUser";
+    }
 
+    @PostMapping("/users/edit/{id}")
+    public String editUserPost(@PathVariable("id") long id,@ModelAttribute User user){
+        userService.updateUser(id,user);
+        return "redirect:/admin/users";
+    }
 }

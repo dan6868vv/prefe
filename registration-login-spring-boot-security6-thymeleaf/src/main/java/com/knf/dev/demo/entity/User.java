@@ -23,6 +23,7 @@ public class User {
 
    private String password;
 
+   private int balance;
 
    @ManyToMany(fetch = FetchType.EAGER,
            cascade = CascadeType.ALL)
@@ -34,7 +35,13 @@ public class User {
                            referencedColumnName = "id"))
    private Collection<Role> roles;
 
+   public int getBalance() {
+      return balance;
+   }
 
+   public void setBalance(int balance) {
+      this.balance = balance;
+   }
 
    public User() {
 
@@ -43,11 +50,12 @@ public class User {
 
 
    public User(String nickName, String email, String password,
-               Collection<Role> roles) {
+               Collection<Role> roles, int balance) {
       this.nickName = nickName;
       this.email = email;
       this.password = password;
       this.roles = roles;
+      this.balance = balance;
    }
 
 

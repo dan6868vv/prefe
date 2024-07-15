@@ -167,8 +167,8 @@
             <th>ID</th>
             <th>Имя</th>
             <th>Email</th>
+            <th>Баланс</th>
             <th>Роль</th>
-            <!--            <th>Дата регистрации</th>-->
             <th>Действия</th>
         </tr>
         </thead>
@@ -176,9 +176,10 @@
         <tr class="actions" th:each="user : ${users}">
             <td th:text="${user.id}"></td>
             <td>
-            <button class="edit-button" th:onclick="'window.location.href=\'/admin/users/talons/' + ${user.id} + '\''" th:text="${user.getFirstName()}+ ' '+ ${user.getLastName()}">Редактировать</button>
+            <button class="edit-button" th:onclick="'window.location.href=\'/admin/users/talons/' + ${user.id} + '\''" th:text="${user.getNickName()}">Редактировать</button>
             </td>
             <td th:text="${user.email}"></td>
+            <td th:text="${user.getBalance()}"></td>
             <td th:each="rol:${user.getRoles()}" th:text="${rol.getName()}"></td>
             <!--            <td th:text="${user.registrationDate}"></td>-->
             <td class="actions">

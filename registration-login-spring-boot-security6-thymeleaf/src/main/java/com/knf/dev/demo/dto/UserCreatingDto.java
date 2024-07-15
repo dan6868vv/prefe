@@ -5,7 +5,7 @@ public class UserCreatingDto {
     private String email;
     private String password;
     private String role;
-
+    private int balance=1000;
     public String getRole() {
         return role;
     }
@@ -22,7 +22,13 @@ public class UserCreatingDto {
         this.nickName = nickName;
     }
 
+    public int getBalance() {
+        return balance;
+    }
 
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
 
     public String getEmail() {
         return email;

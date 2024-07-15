@@ -5,9 +5,17 @@ public class UserRegistrationDto {
    private String nickName;
    private String email;
    private String password;
-
+   private int balance = 1000;
    public UserRegistrationDto() {
 
+   }
+
+   public int getBalance() {
+      return balance;
+   }
+
+   public void setBalance(int balance) {
+      this.balance = balance;
    }
 
    public String getNickName() {

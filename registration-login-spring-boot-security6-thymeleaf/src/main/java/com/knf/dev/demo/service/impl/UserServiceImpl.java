@@ -44,6 +44,7 @@ public class UserServiceImpl implements UserService {
       existingUser.setNickName(user.getNickName());
       existingUser.setEmail(user.getEmail());
       existingUser.setRoles(user.getRoles());
+      existingUser.setBalance(user.getBalance());
       userRepository.save(existingUser);
    }
 
@@ -54,7 +55,7 @@ public class UserServiceImpl implements UserService {
               registrationDto.getEmail(),
               passwordEncoder.encode(registrationDto
                       .getPassword()),
-              Arrays.asList(new Role("ROLE_USER"))
+              Arrays.asList(new Role("ROLE_USER")),registrationDto.getBalance()
               );// поебень с созданием наверное?
       System.out.println("User:" + user.getNickName());
       return userRepository.save(user);
@@ -69,7 +70,7 @@ public class UserServiceImpl implements UserService {
               creatingDto.getEmail(),
               passwordEncoder.encode(creatingDto
                       .getPassword()),
-              Arrays.asList(new Role(creatingDto.getRole())));
+              Arrays.asList(new Role(creatingDto.getRole())),creatingDto.getBalance());
 
       return userRepository.save(user);
    }
@@ -133,6 +134,4 @@ public class UserServiceImpl implements UserService {
       }
       return doctorList;
    }
-
-
 }
