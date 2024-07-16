@@ -84,42 +84,52 @@ public class GameController {
         if(gameRepository.getGameIdByUsersId(id1,id2)!=null) {
             if (gameService.isInGame(userId) &&
                     layoutOfCardRepository.getLOCByUserGameId(userId, gameRepository.getGameIdByUserId(userId)) == null) {
+//                System.out.println("gameService.getCards: " + gameService.getCards());
+                ArrayList<String> shuffledList = shuffleCard(gameService.getCards());
+//                System.out.println("shuffled list: "+shuffledList);
+                if(!layoutOfCardService.isExistGame(gameRepository.getGameIdByUserId(userId))) {
+//            if(userId.equals(gameRepository.gameByUserId(userId).getId1())) {
+                    LayoutOfCardCreationDto layoutOfCardCreationDto = new LayoutOfCardCreationDto(
+                            gameRepository.gameByUserId(userId).getId1(),
+                            gameRepository.getGameIdByUserId(gameRepository.gameByUserId(userId).getId1()),
+                            copyToArrayListString(shuffledList, 0, 12));
+//                System.out.println("Card for user 1 ID: " + copyToArrayListString(shuffledList, 0, 12));
+                    layoutOfCardService.save(layoutOfCardCreationDto);
 
-                LayoutOfCardCreationDto layoutOfCardCreationDto = new LayoutOfCardCreationDto(
-                        userService.findUserByEmail(auth.getName()).getId(),
-                        gameRepository.getGameIdByUserId(userService.findUserByEmail(auth.getName()).getId()),
-                        copyToArrayListString(shuffleCard(gameService.getCards()), 0, 10));
+                    LayoutOfCardCreationDto layoutOfCardCreationDto1 = new LayoutOfCardCreationDto(
+                            gameRepository.gameByUserId(userId).getId2(),
+                            gameRepository.getGameIdByUserId(gameRepository.gameByUserId(userId).getId2()),
+                            copyToArrayListString(shuffledList, 12, 12));
+//                System.out.println("Card for user 2 ID: " + copyToArrayListString(shuffledList, 12, 12));
+                    layoutOfCardService.save(layoutOfCardCreationDto1);
+//            }
+                }
+//            if(userId.equals(gameRepository.gameByUserId(userId).getId2())) {
+//
+//                LayoutOfCardCreationDto layoutOfCardCreationDto = new LayoutOfCardCreationDto(
+//                        userService.findUserByEmail(auth.getName()).getId(),
+//                        gameRepository.getGameIdByUserId(userService.findUserByEmail(auth.getName()).getId()),
+//                        copyToArrayListString(shuffledList, 12, 12));
+//                System.out.println("Card for user 2 ID: " + copyToArrayListString(shuffledList, 12, 12));
+//                layoutOfCardService.save(layoutOfCardCreationDto);
+//            }
 
-                layoutOfCardService.save(layoutOfCardCreationDto);
             }
             model.addAttribute("cardsUser1", layoutOfCardService.getArrayListStringByLOC(layoutOfCardRepository.getLOCByUserGameId(
                     userId, gameRepository.getGameIdByUserId(userId))
             ));
+
 //        model.addAttribute("cardsUser1",copyToArrayListString(shuffleCard(gameService.getCards()),
 //                0,10));
-            model.addAttribute("cardsUser2", copyToArrayListString(shuffleCard(gameService.getCards()),
-                    10, 10));
-            model.addAttribute("talonUser1", copyToArrayListString(shuffleCard(gameService.getCards()),
-                    20, 2));
-            model.addAttribute("talonUser2", copyToArrayListString(shuffleCard(gameService.getCards()),
-                    22, 2));
-            model.addAttribute("shuffledCard", shuffleCard(gameService.getCards()));
-            System.out.println(gameService.getRandomCardOrder());
-            System.out.println(shuffleCard(gameService.getCards()));
-            System.out.println("Количество карт" + copyToArrayListString(shuffleCard(gameService.getCards()),
-                    0, 10).size() + "First user cards: " + copyToArrayListString(shuffleCard(gameService.getCards()),
-                    0, 10));
-            System.out.println("Second user cards: " + copyToArrayListString(shuffleCard(gameService.getCards()),
-                    10, 10));
-            System.out.println("Talon first user: " + copyToArrayListString(shuffleCard(gameService.getCards()),
-                    20, 2));
-
+//            model.addAttribute("cardsUser2", copyToArrayListString(shuffleCard(gameService.getCards()),
+//                    10, 10));
+//            model.addAttribute("talonUser1", copyToArrayListString(shuffleCard(gameService.getCards()),
+//                    20, 2));
+//            model.addAttribute("talonUser2", copyToArrayListString(shuffleCard(gameService.getCards()),
+//                    22, 2));
+//            model.addAttribute("shuffledCard", shuffleCard(gameService.getCards()));
             return "game/playUsers";
-//        }
-//        else{
-////            return "redirect:/game/play-"+id1+"-"+id2;
-//            return "game/playUsers";
-//        }
+
         }
         else{
             return "redirect:/";
@@ -138,10 +148,13 @@ public class GameController {
                                                int amountOfNumber ) {
 
         ArrayList<String> list = new ArrayList<>();
-
+        System.out.println("Old ArrayList: "+oldList);
+        System.out.println("copyToArrayListString: ");
         for(int i=startOld;i<amountOfNumber+startOld;i++) {
             list.add(oldList.get(i));
+            System.out.println(oldList.get(i));
         }
+        System.out.println("END");
         return list;
     }
 
@@ -149,13 +162,16 @@ public class GameController {
         Random rand = new Random();
         ArrayList<String> shuffledList = new ArrayList<>();
         shuffledList = list;
+        System.out.println("list: "+list);
         for(int i=0;i<10000;i++){
             int number1 = rand.nextInt(999);
-            int num1=number1 % 24;
+            int num1 = number1 % 24;
+
             int number2 = rand.nextInt(999);
             int num2 = number2 % 24;
             Collections.swap(shuffledList,num1,num2);
         }
+        System.out.println("In func shuffledList: "+shuffledList);
         return shuffledList;
     }
 }

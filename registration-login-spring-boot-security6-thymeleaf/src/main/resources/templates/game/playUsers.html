@@ -71,7 +71,7 @@
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
     <title>Гусарик</title>
     <style>
         body {
@@ -89,7 +89,8 @@
             width: 100px; /* Ширина карты */
             height: 140px; /* Высота карты */
             margin: 10px;
-            background-image: url('https://avatars.mds.yandex.net/i?id=5387c2049553f6d33831e628ddad6ac073b22341f286645c-12494956-images-thumbs&n=13'); /* Рубашка карты */
+            /*background-image: url('https://avatars.mds.yandex.net/i?id=5387c2049553f6d33831e628ddad6ac073b22341f286645c-12494956-images-thumbs&n=13'); !* Рубашка карты *!*/
+            /*background-image: url('/photo/ace-spades.jpg'); !* Рубашка карты *!*/
             background-size: cover;
             cursor: pointer;
             transition: transform 0.2s;
@@ -104,27 +105,33 @@
             flex-wrap: wrap; /* Позволяет оборачивать карты при необходимости */
             justify-content: center; /* Центрирует карты по горизонтали */
         }
+        img {
+            width: 200px;
+        }
     </style>
 </head>
 <body>
 <!--<h1 style="text-align: center;">Игра в Гусарик</h1>-->
 <h4>Карты первого игрока</h4>
 <div th:each="card:${cardsUser1}">
-    <a th:text="${card}"></a>
+    <a th:text="${card}"> </a>
+    <img class="card" src="/photo/ace-spades.png" alt="КАРТЫ">
 </div>
 <!--<h4>Карты второго игрока</h4>-->
 <!--<div th:each="card:${cardsUser2}">-->
 <!--    <a th:text="${card}"></a>-->
 <!--</div>-->
-<h4>Прикуп первого игрока</h4>
-<div th:each="card:${talonUser1}">
-    <a th:text="${card}"></a>
-</div>
+<!--<h4>Прикуп первого игрока</h4>-->
+<!--<div th:each="card:${talonUser1}">-->
+<!--    <a th:text="${card}"></a>-->
+<!--</div>-->
 <!--<h4>Прикуп второго игрока</h4>-->
 <!--<div th:each="card:${talonUser2}">-->
 <!--    <a th:text="${card}"></a>-->
 <!--</div>-->
+
 <div id="cards">
+    <img src="/photo/ace-spades.jpg" alt="КАРТЫ">
     <div class="card" onclick="cardClicked('Card 1')"></div>
     <div class="card" onclick="cardClicked('Card 2')"></div>
     <div class="card" onclick="cardClicked('Card 3')"></div>

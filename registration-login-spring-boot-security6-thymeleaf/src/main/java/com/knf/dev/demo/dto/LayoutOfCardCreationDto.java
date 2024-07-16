@@ -16,10 +16,12 @@ public class LayoutOfCardCreationDto {
     private String ninthCard;
     private String tenthCard;
 
+    private String stockCardOne;
+    private String stockCardTwo;
     public LayoutOfCardCreationDto(Long userId, Long gameId, String firstCard, String secondCard,
                                    String thirdCard, String fourthCard, String fifthCard,
                                    String sixthCard, String seventhCard, String eighthCard,
-                                   String ninthCard, String tenthCard) {
+                                   String ninthCard, String tenthCard, String stockCardOne,String stockCardTwo) {
         this.userId = userId;
         this.gameId = gameId;
         this.firstCard = firstCard;
@@ -32,6 +34,8 @@ public class LayoutOfCardCreationDto {
         this.eighthCard = eighthCard;
         this.ninthCard = ninthCard;
         this.tenthCard = tenthCard;
+        this.stockCardOne = stockCardOne;
+        this.stockCardTwo = stockCardTwo;
     }
     public LayoutOfCardCreationDto(Long userId,Long gameId, ArrayList<String> cardList){
         this.userId = userId;
@@ -46,9 +50,27 @@ public class LayoutOfCardCreationDto {
         this.eighthCard = cardList.get(7);
         this.ninthCard = cardList.get(8);
         this.tenthCard = cardList.get(9);
-
+        this.stockCardOne = cardList.get(10);
+        this.stockCardTwo = cardList.get(11);
     }
     public LayoutOfCardCreationDto() {}
+
+    public String getStockCardOne() {
+        return stockCardOne;
+    }
+
+    public void setStockCardOne(String stockCardOne) {
+        this.stockCardOne = stockCardOne;
+    }
+
+    public String getStockCardTwo() {
+        return stockCardTwo;
+    }
+
+    public void setStockCardTwo(String stockCardTwo) {
+        this.stockCardTwo = stockCardTwo;
+    }
+
     public Long getUserId() {
         return userId;
     }

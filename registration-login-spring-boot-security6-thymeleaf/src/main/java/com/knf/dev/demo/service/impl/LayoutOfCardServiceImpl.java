@@ -23,7 +23,8 @@ public class LayoutOfCardServiceImpl implements LayoutOfCardService {
                 layoutOfCardCreationDto.getThirdCard(), layoutOfCardCreationDto.getFourthCard(),
                 layoutOfCardCreationDto.getFifthCard(), layoutOfCardCreationDto.getSixthCard(),
                 layoutOfCardCreationDto.getSeventhCard(), layoutOfCardCreationDto.getEighthCard(),
-                layoutOfCardCreationDto.getNinthCard(), layoutOfCardCreationDto.getTenthCard());
+                layoutOfCardCreationDto.getNinthCard(), layoutOfCardCreationDto.getTenthCard(),
+                layoutOfCardCreationDto.getStockCardOne(), layoutOfCardCreationDto.getStockCardTwo());
         return layoutOfCardRepository.save(layoutOfCard);
     }
 
@@ -40,6 +41,13 @@ public class LayoutOfCardServiceImpl implements LayoutOfCardService {
         list.add(layoutOfCard.getEighthCard());
         list.add(layoutOfCard.getNinthCard());
         list.add(layoutOfCard.getTenthCard());
+        list.add(layoutOfCard.getStockCardOne());
+        list.add(layoutOfCard.getStockCardTwo());
         return list;
+    }
+
+    @Override
+    public boolean isExistGame(Long gameId) {
+        return layoutOfCardRepository.getLOCByGameId(gameId).size()==2;
     }
 }

@@ -8,4 +8,5 @@ import java.util.ArrayList;
 public interface LayoutOfCardService {
     LayoutOfCard save(LayoutOfCardCreationDto layoutOfCardCreationDto);
     ArrayList<String> getArrayListStringByLOC(LayoutOfCard layoutOfCard);
+    boolean isExistGame(Long gameId);
 }

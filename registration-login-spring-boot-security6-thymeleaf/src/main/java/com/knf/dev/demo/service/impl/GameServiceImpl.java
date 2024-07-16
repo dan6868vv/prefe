@@ -27,9 +27,10 @@ public class GameServiceImpl implements GameService {
     }
 
 
-    private ArrayList<String> cards= new ArrayList<>();
+//    private ArrayList<String> cards= new ArrayList<>();
     @Override
     public ArrayList<String> getCards() {
+        ArrayList<String> cards= new ArrayList<>();
 //        cards.add("8-Clubs");
 //        cards.add("8-Diamonds");
 //        cards.add("8-Hearts");

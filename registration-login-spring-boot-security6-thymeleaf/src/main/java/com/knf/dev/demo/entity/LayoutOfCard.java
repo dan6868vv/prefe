@@ -22,9 +22,12 @@ public class LayoutOfCard {
     private String ninthCard;
     private String tenthCard;
 
+
+    private String stockCardOne;
+    private String stockCardTwo;
     public LayoutOfCard(Long userId,Long gameId, String firstCard, String secondCard, String thirdCard,
                         String fourthCard, String fifthCard, String sixthCard, String seventhCard,
-                        String eighthCard, String ninthCard, String tenthCard) {
+                        String eighthCard, String ninthCard, String tenthCard,String stockCardOne,String stockCardTwo) {
         this.userId = userId;
         this.gameId = gameId;
         this.firstCard = firstCard;
@@ -37,9 +40,27 @@ public class LayoutOfCard {
         this.eighthCard = eighthCard;
         this.ninthCard = ninthCard;
         this.tenthCard = tenthCard;
+        this.stockCardOne = stockCardOne;
+        this.stockCardTwo = stockCardTwo;
     }
 
     public LayoutOfCard() {}
+
+    public String getStockCardOne() {
+        return stockCardOne;
+    }
+
+    public void setStockCardOne(String stockCardOne) {
+        this.stockCardOne = stockCardOne;
+    }
+
+    public String getStockCardTwo() {
+        return stockCardTwo;
+    }
+
+    public void setStockCardTwo(String stockCardTwo) {
+        this.stockCardTwo = stockCardTwo;
+    }
 
     public Long getGameId() {
         return gameId;
