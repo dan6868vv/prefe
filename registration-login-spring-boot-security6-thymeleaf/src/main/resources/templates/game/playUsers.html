@@ -1,11 +1,147 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+
+<!--<body th:unless="${userId}==${id1} or ${userId}==${id2}">-->
+<!--<h1>Эта игра не для вас</h1>-->
+<!--<a th:text="${id1}"></a>-->
+<!--<a th:text="${id2}"></a>-->
+<!--</body>-->
+
+<!--<body th:if="${userId}==${id1} or ${userId}==${id2}">-->
+<!--<h1>Вы можете играть эту игру</h1>-->
+<!--<a th:text="${id1}"></a>-->
+<!--<a th:text="${id2}"></a>-->
+<!--</body>-->
+<!--</html>-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Гусарик</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            margin: 0;-->
+<!--            height: 100vh;-->
+<!--            background-image: url('https://wallpapers.com/images/hd/red-checkered-2000-x-1125-background-qdjl18y46ot87w0h.jpg'); /* Скатерть в клетку */-->
+<!--            background-size: cover;-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            align-items: center;-->
+<!--            flex-direction: column;-->
+<!--        }-->
+
+<!--        .card {-->
+<!--            width: 100px; /* Ширина карты */-->
+<!--            height: 140px; /* Высота карты */-->
+<!--            margin: 10px;-->
+<!--            background-image: url('https://avatars.mds.yandex.net/i?id=5387c2049553f6d33831e628ddad6ac073b22341f286645c-12494956-images-thumbs&n=13'); /* Рубашка карты */-->
+<!--            background-size: cover;-->
+<!--            cursor: pointer;-->
+<!--            transition: transform 0.2s;-->
+<!--        }-->
+
+<!--        .card:hover {-->
+<!--            transform: scale(1.1);-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Игра в Гусарик</h1>-->
+<!--<div id="cards">-->
+<!--    <div class="card" onclick="cardClicked('Card 1')"></div>-->
+<!--    <div class="card" onclick="cardClicked('Card 2')"></div>-->
+<!--    <div class="card" onclick="cardClicked('Card 3')"></div>-->
+<!--    <div class="card" onclick="cardClicked('Card 4')"></div>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    function cardClicked(cardName) {-->
+<!--        alert('Вы нажали на: ' + cardName);-->
+<!--        // Здесь можно добавить логику для игры-->
+<!--    }-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гусарик</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-image: url('https://wallpapers.com/images/hd/red-checkered-2000-x-1125-background-qdjl18y46ot87w0h.jpg'); /* Скатерть в клетку */
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end; /* Выравнивание по низу */
+            padding-bottom: 20px; /* Отступ от нижней части экрана */
+        }
+
+        .card {
+            width: 100px; /* Ширина карты */
+            height: 140px; /* Высота карты */
+            margin: 10px;
+            background-image: url('https://avatars.mds.yandex.net/i?id=5387c2049553f6d33831e628ddad6ac073b22341f286645c-12494956-images-thumbs&n=13'); /* Рубашка карты */
+            background-size: cover;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.1);
+        }
+
+        #cards {
+            display: flex; /* Flexbox для выравнивания карт */
+            flex-wrap: wrap; /* Позволяет оборачивать карты при необходимости */
+            justify-content: center; /* Центрирует карты по горизонтали */
+        }
+    </style>
 </head>
 <body>
-<a th:text="${id1}"></a>
-<a th:text="${id2}"></a>
+<!--<h1 style="text-align: center;">Игра в Гусарик</h1>-->
+<h4>Карты первого игрока</h4>
+<div th:each="card:${cardsUser1}">
+    <a th:text="${card}"></a>
+</div>
+<!--<h4>Карты второго игрока</h4>-->
+<!--<div th:each="card:${cardsUser2}">-->
+<!--    <a th:text="${card}"></a>-->
+<!--</div>-->
+<h4>Прикуп первого игрока</h4>
+<div th:each="card:${talonUser1}">
+    <a th:text="${card}"></a>
+</div>
+<!--<h4>Прикуп второго игрока</h4>-->
+<!--<div th:each="card:${talonUser2}">-->
+<!--    <a th:text="${card}"></a>-->
+<!--</div>-->
+<div id="cards">
+    <div class="card" onclick="cardClicked('Card 1')"></div>
+    <div class="card" onclick="cardClicked('Card 2')"></div>
+    <div class="card" onclick="cardClicked('Card 3')"></div>
+    <div class="card" onclick="cardClicked('Card 4')"></div>
+    <div class="card" onclick="cardClicked('Card 5')"></div>
+    <div class="card" onclick="cardClicked('Card 6')"></div>
+    <div class="card" onclick="cardClicked('Card 7')"></div>
+    <div class="card" onclick="cardClicked('Card 8')"></div>
+    <div class="card" onclick="cardClicked('Card 9')"></div>
+    <div class="card" onclick="cardClicked('Card 10')"></div>
+</div>
+
+<script>
+    function cardClicked(cardName) {
+        alert('Вы нажали на: ' + cardName);
+        // Здесь можно добавить логику для игры
+    }
+</script>
 </body>
 </html>
