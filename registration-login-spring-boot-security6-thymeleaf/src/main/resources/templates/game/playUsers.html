@@ -1,24 +1,6 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Title</title>-->
-<!--</head>-->
 
-<!--<body th:unless="${userId}==${id1} or ${userId}==${id2}">-->
-<!--<h1>Эта игра не для вас</h1>-->
-<!--<a th:text="${id1}"></a>-->
-<!--<a th:text="${id2}"></a>-->
-<!--</body>-->
-
-<!--<body th:if="${userId}==${id1} or ${userId}==${id2}">-->
-<!--<h1>Вы можете играть эту игру</h1>-->
-<!--<a th:text="${id1}"></a>-->
-<!--<a th:text="${id2}"></a>-->
-<!--</body>-->
-<!--</html>-->
 <!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<html lang="ru" xmlns:th="http://www.thymeleaf.org">-->
 <!--<head>-->
 <!--    <meta charset="UTF-8">-->
 <!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
@@ -31,15 +13,16 @@
 <!--            background-size: cover;-->
 <!--            display: flex;-->
 <!--            justify-content: center;-->
-<!--            align-items: center;-->
-<!--            flex-direction: column;-->
+<!--            align-items: flex-end; /* Выравнивание по низу */-->
+<!--            padding-bottom: 20px; /* Отступ от нижней части экрана */-->
 <!--        }-->
 
 <!--        .card {-->
 <!--            width: 100px; /* Ширина карты */-->
 <!--            height: 140px; /* Высота карты */-->
 <!--            margin: 10px;-->
-<!--            background-image: url('https://avatars.mds.yandex.net/i?id=5387c2049553f6d33831e628ddad6ac073b22341f286645c-12494956-images-thumbs&n=13'); /* Рубашка карты */-->
+<!--            /*background-image: url('https://avatars.mds.yandex.net/i?id=5387c2049553f6d33831e628ddad6ac073b22341f286645c-12494956-images-thumbs&n=13'); !* Рубашка карты *!*/-->
+<!--            /*background-image: url('/photo/ace-spades.jpg'); !* Рубашка карты *!*/-->
 <!--            background-size: cover;-->
 <!--            cursor: pointer;-->
 <!--            transition: transform 0.2s;-->
@@ -48,15 +31,38 @@
 <!--        .card:hover {-->
 <!--            transform: scale(1.1);-->
 <!--        }-->
+
+<!--        #cards {-->
+<!--            display: flex; /* Flexbox для выравнивания карт */-->
+<!--            flex-wrap: wrap; /* Позволяет оборачивать карты при необходимости */-->
+<!--            justify-content: center; /* Центрирует карты по горизонтали */-->
+<!--        }-->
+<!--        img {-->
+<!--            width: 200px;-->
+<!--        }-->
 <!--    </style>-->
 <!--</head>-->
 <!--<body>-->
-<!--<h1>Игра в Гусарик</h1>-->
+<!--&lt;!&ndash;<h1 style="text-align: center;">Игра в Гусарик</h1>&ndash;&gt;-->
+<!--<h4>Карты первого игрока</h4>-->
+<!--<div th:each="card,iterator:${cardsUser1}"  >-->
+<!--    <a th:if="${iterator.index}<10" th:text="${card}"> </a>-->
+<!--&lt;!&ndash;    <div class="card" th:onclick="cardClicked(${card})" >&ndash;&gt;-->
+<!--    <img th:if="${iterator.index}<10"  th:src="'/photo/'+${card}+'.png'"  alt="КАРТЫ" class="card" >-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--</div>-->
+
 <!--<div id="cards">-->
 <!--    <div class="card" onclick="cardClicked('Card 1')"></div>-->
 <!--    <div class="card" onclick="cardClicked('Card 2')"></div>-->
 <!--    <div class="card" onclick="cardClicked('Card 3')"></div>-->
 <!--    <div class="card" onclick="cardClicked('Card 4')"></div>-->
+<!--    <div class="card" onclick="cardClicked('Card 5')"></div>-->
+<!--    <div class="card" onclick="cardClicked('Card 6')"></div>-->
+<!--    <div class="card" onclick="cardClicked('Card 7')"></div>-->
+<!--    <div class="card" onclick="cardClicked('Card 8')"></div>-->
+<!--    <div class="card" onclick="cardClicked('Card 9')"></div>-->
+<!--    <div class="card" onclick="cardClicked('Card 10')"></div>-->
 <!--</div>-->
 
 <!--<script>-->
@@ -71,77 +77,100 @@
 <html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Гусарик</title>
     <style>
+        /*body {*/
+        /*    margin: 0;*/
+        /*    height: 100vh;*/
+        /*    background-image: url('https://wallpapers.com/images/hd/red-checkered-2000-x-1125-background-qdjl18y46ot87w0h.jpg'); !* Скатерть в клетку *!*/
+        /*    background-size: cover;*/
+        /*    display: flex;*/
+        /*    flex-direction: column;*/
+        /*    align-items: center;*/
+        /*    justify-content: space-between;*/
+        /*    padding: 20px 0;*/
+        /*}*/
         body {
             margin: 0;
-            height: 100vh;
-            background-image: url('https://wallpapers.com/images/hd/red-checkered-2000-x-1125-background-qdjl18y46ot87w0h.jpg'); /* Скатерть в клетку */
-            background-size: cover;
+            height: 93vh;
+            background-color: #35654d; /* Цвет зеленого сукна */
             display: flex;
-            justify-content: center;
-            align-items: flex-end; /* Выравнивание по низу */
-            padding-bottom: 20px; /* Отступ от нижней части экрана */
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 0;
         }
-
         .card {
             width: 100px; /* Ширина карты */
             height: 140px; /* Высота карты */
             margin: 10px;
-            /*background-image: url('https://avatars.mds.yandex.net/i?id=5387c2049553f6d33831e628ddad6ac073b22341f286645c-12494956-images-thumbs&n=13'); !* Рубашка карты *!*/
-            /*background-image: url('/photo/ace-spades.jpg'); !* Рубашка карты *!*/
             background-size: cover;
             cursor: pointer;
             transition: transform 0.2s;
         }
-
+        .card {
+            width: 100px; /* Ширина карты */
+            height: 140px; /* Высота карты */
+            margin: 10px;
+            background-size: cover;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
         .card:hover {
             transform: scale(1.1);
         }
-
+        .top-card {
+            width: 70px; /* Ширина карты */
+            height: 100px; /* Высота карты */
+            /*margin: 1px;*/
+            background-size: cover;
+            /*cursor: pointer;*/
+            /*transition: transform 0.2s;*/
+        }
+        #top-cards  {
+            display: flex; /* Flexbox для выравнивания карт */
+            justify-content: center; /* Центрирует карты по горизонтали */
+            flex-wrap: wrap; /* Позволяет оборачивать карты при необходимости */
+            margin-bottom: 10px; /* Увеличьте значение для большего отступа */
+        }
         #cards {
             display: flex; /* Flexbox для выравнивания карт */
-            flex-wrap: wrap; /* Позволяет оборачивать карты при необходимости */
             justify-content: center; /* Центрирует карты по горизонтали */
+            flex-wrap: nowrap; /* Отключает оборачивание карт */
+            overflow-x: auto; /* Добавляет горизонтальную прокрутку, если карт слишком много */
+            width: 100%; /* Устанавливает ширину контейнера */
         }
         img {
-            width: 200px;
+            width: 100px;
+            height: 140px;
         }
     </style>
 </head>
 <body>
-<!--<h1 style="text-align: center;">Игра в Гусарик</h1>-->
-<h4>Карты первого игрока</h4>
-<div th:each="card:${cardsUser1}">
-    <a th:text="${card}"> </a>
-    <img class="card" src="/photo/ace-spades.png" alt="КАРТЫ">
+<!--<h4>Карты первого игрока</h4>-->
+<div id="top-cards">
+    <img src="https://avatars.mds.yandex.net/i?id=5387c2049553f6d33831e628ddad6ac073b22341f286645c-12494956-images-thumbs&n=13" alt="Card 1" class="top-card">
+    <img src="https://avatars.mds.yandex.net/i?id=5387c2049553f6d33831e628ddad6ac073b22341f286645c-12494956-images-thumbs&n=13" alt="Card 2" class="top-card">
+    <img src="https://avatars.mds.yandex.net/i?id=5387c2049553f6d33831e628ddad6ac073b22341f286645c-12494956-images-thumbs&n=13" alt="Card 3" class="top-card">
+    <img src="https://avatars.mds.yandex.net/i?id=5387c2049553f6d33831e628ddad6ac073b22341f286645c-12494956-images-thumbs&n=13" alt="Card 4" class="top-card">
+    <img src="https://avatars.mds.yandex.net/i?id=5387c2049553f6d33831e628ddad6ac073b22341f286645c-12494956-images-thumbs&n=13" alt="Card 5" class="top-card">
+    <img src="https://avatars.mds.yandex.net/i?id=5387c2049553f6d33831e628ddad6ac073b22341f286645c-12494956-images-thumbs&n=13" alt="Card 6" class="top-card">
+    <img src="https://avatars.mds.yandex.net/i?id=5387c2049553f6d33831e628ddad6ac073b22341f286645c-12494956-images-thumbs&n=13" alt="Card 7" class="top-card">
+    <img src="https://avatars.mds.yandex.net/i?id=5387c2049553f6d33831e628ddad6ac073b22341f286645c-12494956-images-thumbs&n=13" alt="Card 8" class="top-card">
+    <img src="https://avatars.mds.yandex.net/i?id=5387c2049553f6d33831e628ddad6ac073b22341f286645c-12494956-images-thumbs&n=13" alt="Card 9" class="top-card">
+    <img src="https://avatars.mds.yandex.net/i?id=5387c2049553f6d33831e628ddad6ac073b22341f286645c-12494956-images-thumbs&n=13" alt="Card 10" class="top-card">
 </div>
-<!--<h4>Карты второго игрока</h4>-->
-<!--<div th:each="card:${cardsUser2}">-->
-<!--    <a th:text="${card}"></a>-->
-<!--</div>-->
-<!--<h4>Прикуп первого игрока</h4>-->
-<!--<div th:each="card:${talonUser1}">-->
-<!--    <a th:text="${card}"></a>-->
-<!--</div>-->
-<!--<h4>Прикуп второго игрока</h4>-->
-<!--<div th:each="card:${talonUser2}">-->
-<!--    <a th:text="${card}"></a>-->
-<!--</div>-->
 
+<!--<h4>Карты второго игрока</h4>-->
 <div id="cards">
-    <img src="/photo/ace-spades.jpg" alt="КАРТЫ">
-    <div class="card" onclick="cardClicked('Card 1')"></div>
-    <div class="card" onclick="cardClicked('Card 2')"></div>
-    <div class="card" onclick="cardClicked('Card 3')"></div>
-    <div class="card" onclick="cardClicked('Card 4')"></div>
-    <div class="card" onclick="cardClicked('Card 5')"></div>
-    <div class="card" onclick="cardClicked('Card 6')"></div>
-    <div class="card" onclick="cardClicked('Card 7')"></div>
-    <div class="card" onclick="cardClicked('Card 8')"></div>
-    <div class="card" onclick="cardClicked('Card 9')"></div>
-    <div class="card" onclick="cardClicked('Card 10')"></div>
+<!--    <h4>Карты первого игрока</h4>-->
+    <div th:each="card,iterator:${cardsUser1}"  >
+<!--        <a th:if="${iterator.index}<10" th:text="${card}"> </a>-->
+        <!--  qj  <div class="card" th:onclick="cardClicked(${card})" >-->
+        <img th:if="${iterator.index}<12"  th:src="'/photo/'+${card}+'.png'" th:attr="onclick=|cardClicked('${card}')|"  alt="КАРТЫ" class="card" >
+        <!--</div>-->
+    </div>
 </div>
 
 <script>
